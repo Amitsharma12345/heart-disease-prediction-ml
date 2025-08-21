@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Risk Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>❤️ Heart Disease Risk Prediction</h2>
+        <p class="instructions">Please fill the details below carefully:</p>
+
+        <form action="/predict" method="post">
+            <label>Age: <span class="hint">(29-77 years, ideally 30-50)</span></label>
+            <input type="text" name="age" required>
+        
+            <label>Sex (0 = Female, 1 = Male): <span class="hint">(Only 0 or 1)</span></label>
+            <input type="text" name="sex" required>
+        
+            <label>Chest Pain Type: <span class="hint">(0=typical, 1=atypical, 2=non-anginal, 3=asymptomatic)</span></label>
+            <input type="text" name="chest_pain" required>
+        
+            <label>Resting Blood Pressure: <span class="hint">(90-200 mm Hg, ideal 120-130)</span></label>
+            <input type="text" name="resting_bp" required>
+        
+            <label>Cholesterol: <span class="hint">(126-564 mg/dl, normal 150-240)</span></label>
+            <input type="text" name="cholesterol" required>
+        
+            <label>Fasting Blood Sugar: <span class="hint">(0 = No, 1 = Yes, ideally 0)</span></label>
+            <input type="text" name="fasting_bs" required>
+        
+            <label>Resting ECG Result: <span class="hint">(0-2, ideally 0-1)</span></label>
+            <input type="text" name="resting_ecg" required>
+        
+            <label>Max Heart Rate Achieved: <span class="hint">(71-202 bpm, ideally 140-180)</span></label>
+            <input type="text" name="max_heart_rate" required>
+        
+            <label>Exercise Induced Angina: <span class="hint">(0 = No, 1 = Yes, ideally 0)</span></label>
+            <input type="text" name="exercise_angina" required>
+        
+            <label>Oldpeak (ST Depression): <span class="hint">(0.0-6.2, ideally 0.0-2.0)</span></label>
+            <input type="text" name="oldpeak" required>
+        
+            <label>Slope of ST Segment: <span class="hint">(0=upsloping, 1=flat, 2=downsloping)</span></label>
+            <input type="text" name="st_slope" required>
+        
+            <input type="submit" value="Predict Risk">
+        </form>
+        
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
